@@ -29,7 +29,7 @@ To support the use of RegMiner4APR, we provide the following artifacts:
 
 2. Clone the repository
     ```bash
-    git clone https://github.com/brojackvn/RegMiner4APR-Framework.git
+    git clone https://github.com/MSR25-RegressionBug/RegMiner4APR-Framework
     ```
 
 3. Build the Docker image
