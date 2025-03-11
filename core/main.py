@@ -6,6 +6,7 @@ from core.commands.regminer4aprCompile import compile_command
 from core.commands.regminer4aprEnv import env_command
 from core.commands.regminer4aprTest import test_command
 from core.commands.regminer4aprInfo import info_command
+from core.commands.regminer4aprClean import clean_command
 
 def main():
     parser, subparsers, args = parse_args()
@@ -25,3 +26,6 @@ def main():
     elif args.command == 'test':
         working_dir = args.working_dir if args.working_dir else os.getcwd()
         sys.exit(test_command(working_dir, args.test_case))
+    elif args.command == 'clean':
+        working_dir = args.working_dir if args.working_dir else os.getcwd()
+        sys.exit(clean_command(working_dir))

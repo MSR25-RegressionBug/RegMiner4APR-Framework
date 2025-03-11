@@ -46,12 +46,16 @@ def compile_command(working_dir):
     print("=" * 80)
     print(f"Compiling at working directory: {os.path.abspath(working_dir)}")
     print("-" * 40)
-    if subprocess.call(command, cwd=os.path.abspath(working_dir), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) != 0:
+    compile_result = subprocess.run(command, cwd=os.path.abspath(working_dir), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    if compile_result.returncode != 0:
         print(f"Error: Compiling at working directory!")
+        print("-" * 40)      
+        print(compile_result.stdout)  # Print the actual error message
+        print("-" * 40)
         return 1
     else:
         print(f"Successfully compiled!")
-        
         print("=" * 80)
         print(f"Compiling test classes at working directory: {os.path.abspath(working_dir)}")
         print("-" * 40)

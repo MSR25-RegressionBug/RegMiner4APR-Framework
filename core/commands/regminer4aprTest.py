@@ -5,6 +5,7 @@ import threading
 import time
 from core.utils.test_report import get_test_identifiers_and_exception
 from core.utils.jdk import check_jdk_version
+from core.commands.regminer4aprCompile import compile_command
 
 def test_command(working_dir, test_case = None):
     if check_jdk_version() == 1:
@@ -36,6 +37,9 @@ def test_command(working_dir, test_case = None):
         subprocess.call(["mvn", "clean"], cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     elif build_system == "gradle":
         subprocess.call(["./gradlew", "clean"], cwd=working_dir, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+    if compile_command(working_dir) == 1:
+        return 1
     
     # Run test cases
     if test_case is not None:

@@ -65,7 +65,15 @@ def parse_args():
     parser_compile.add_argument('-w', 
                                 '--working_dir', 
                                 help='working directory to compile [optional]')
-
+    # ==================== Clean command ========================
+    parser_clean = subparsers.add_parser('clean',
+                                         description='clean compiled files at a specific working directory or current directory',
+                                         usage='regminer4apr clean [-w working_dir]',
+                                         formatter_class=SortingHelpFormatter,
+                                         add_help=False)
+    parser_clean.add_argument('-w',
+                                '--working_dir',
+                                help='working directory to clean [optional]')
     # ==================== Test command =========================
     parser_test = subparsers.add_parser('test',
                                         description='run all test cases at a specific working directory or current directory',

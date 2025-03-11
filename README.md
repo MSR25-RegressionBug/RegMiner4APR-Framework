@@ -79,6 +79,18 @@ For help with available commands, use:
 regminer4apr help
 ```
 
+```output
+usage: regminer4apr <command> [<args>]
+
+Commands:
+  help         show help message and exit
+  env          display information about the system environment
+  info         display information about a specific regression bug
+  checkout     checkout a regression bug at a specific working directory
+  compile      compile source code at a specific working directory or current directory
+  test         run all test cases at a specific working directory or current directory
+```
+
 ### 1. View Current Working Environment
 
 To view the environment variables, run:
