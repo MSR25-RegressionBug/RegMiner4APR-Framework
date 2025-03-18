@@ -184,11 +184,12 @@ def get_test_identifiers_and_exception(report_directory):
 #         json.dump(data, file, indent=4)
 
 # if __name__ == "__main__":
-#     meta_data_path = "./regressionbug4apr.json"  # Update with actual path
+#     # meta_data_path = "./regressionbug4apr.json"  # Update with actual path
+#     metadata_path          = "./meta-data.json"
+#     regressionbug4apr_path = "./regressionbug4apr.json"
 
 #     for i in range(1, 96):
 #         bug_id = "RegressionBug-" + str(i)
-#         print(bug_id)
 
 #         # Directory containing the Surefire XML reports for the current bug
 #         report_directory = f"/home/student.unimelb.edu.au/anhh1/working-space/APR/miner_space/cache/{bug_id}/BUGGY/target/surefire-reports"
@@ -197,25 +198,26 @@ def get_test_identifiers_and_exception(report_directory):
 
 #         # Call the function to get test identifiers
 #         passing_test_identifiers, failing_test_identifiers, count_pos, count_neg = get_test_identifiers_and_exception(report_directory)
-#         print(f"{count_pos}")
-#         with open(meta_data_path, 'r') as file:
+        
+#         with open(regressionbug4apr_path, 'r') as file:
 #             data = json.load(file)
 #         for entry in data:
-#             if entry["bug_id"] == bug_id:
-#                 entry["failing_tests"] = failing_test_identifiers
+#             if data[entry]["bug_id"] == bug_id:
+#                 data[entry]["failing_tests"] = failing_test_identifiers
+#                 list_of_passing_tests = list(failing_test_identifiers.keys())
+#                 list_of_failing_tests = passing_test_identifiers
+#                 update_meta_data(metadata_path, bug_id, list_of_passing_tests, list_of_failing_tests, len(list_of_passing_tests), len(list_of_failing_tests))
 #                 break
-
 #         # Write the updated JSON data back to the file
-#         with open(meta_data_path, 'w') as file:
+#         with open(regressionbug4apr_path, 'w') as file:
 #             json.dump(data, file, indent=4)
     
-#     # passing_test_identifiers, failing_test_identifiers, count_pos, count_neg = get_test_identifiers_and_exception("/home/student.unimelb.edu.au/anhh1/working-space/APR/miner_space/cache/RegressionBug-68/BIC/target/surefire-reports")
-
-#     # print(f"===================== RegressionBug-68 =========================")
-#     # print(f"Passing Tests: {count_pos}")
-#     # print(f"Failing Tests: {count_neg}")
-#     # for test_id, test_details in failing_test_identifiers.items():
-#     #     print("-----------------------------------------")
-#     #     print(f"Test: {test_id}")
-#     #     print(f"Type: {test_details['type']}")
-#     #     print(f"Message: {test_details['message']}")
+    # passing_test_identifiers, failing_test_identifiers, count_pos, count_neg = get_test_identifiers_and_exception("/home/student.unimelb.edu.au/anhh1/working-space/APR/miner_space/cache/RegressionBug-68/BIC/target/surefire-reports")
+    # print(f"===================== RegressionBug-68 =========================")
+    # print(f"Passing Tests: {count_pos}")
+    # print(f"Failing Tests: {count_neg}")
+    # for test_id, test_details in failing_test_identifiers.items():
+    #     print("-----------------------------------------")
+    #     print(f"Test: {test_id}")
+    #     print(f"Type: {test_details['type']}")
+    #     print(f"Message: {test_details['message']}")
